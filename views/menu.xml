@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem name="Listing" id="serah_listing.menu_root"/>
+        <record model="ir.actions.act_window" id="serah_listing_action_window">
+            <field name="name">Listing</field>
+            <field name="res_model">serah.listing</field>
+            <field name="view_mode">tree,form</field>
+              <field name='help' type='html'>
+                  <p class="o_view_nocontent_smiling_face">
+                      Ajoutez votre première liste !
+                  </p>
+              </field>
+          </record>
+          <menuitem name="Listing" 
+            id="serah_listing.menu_root_child" 
+            parent="serah_listing.menu_root" 
+            action="serah_listing_action_window" 
+            sequence='10' 
+        />
+        
+    </data>
+</odoo>

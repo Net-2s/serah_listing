@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_serah_listing_user,serah.listing,model_serah_listing,base.group_user,1,1,1,0
+access_serah_listing_manager,serah.listing,model_serah_listing,base.group_erp_manager,1,1,1,1
+access_serah_listing_line_user,serah.listing.line,model_serah_listing_line,base.group_user,1,1,1,0
+access_serah_listing_line_manager,serah.listing.line,model_serah_listing_line,base.group_erp_manager,1,1,1,1

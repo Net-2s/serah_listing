@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="serah_listing_view_tree" model="ir.ui.view">
+        <field name="name">serah.listing.view.tree</field>
+        <field name="model">serah.listing</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="serah_listing_line_view_form" model="ir.ui.view">
+        <field name="name">serah.listing.line.view.form</field>
+        <field name="model">serah.listing.line</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="price_unit"/>
+                            <field name="quantity"/>
+                        </group>
+                        <group>
+                            <field name="texte"/>
+                            <field name="barcode"/>
+                            <field name="colissage"/>
+                        </group>
+                        <field name="note" placeholder="Commentaire..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="serah_listing_view_form" model="ir.ui.view">
+        <field name="name">serah.listing.view.form</field>
+        <field name="model">serah.listing</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <header>
+                    <button name="action_quotation_send" string="Envoyer par mail" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title mb24" >
+						<h1>
+							<field  class="text-break" name="name" default_focus="1" placeholder="ex: Liste de..."/>
+						</h1>
+					</div>
+                    <notebook>
+                        <page string="Liste des Articles">
+                            <field name="listing_line" widget="one2many_list">
+                                <tree string="Ligne d'article" editable="bottom">
+                                    <field name="product_id" domain="[('detailed_type','=', 'product')]"/>
+                                    <field name="barcode" optional="show"/>
+                                    <field name="colissage" optional="show"/>
+                                    <field name="texte" optional="show"/>
+                                    <field name="image_1920" widget="image" options="{'size': [50, 50]}" optional="show" />
+                                    <field name="quantity"/>
+                                    <field name="price_unit" />
+                                    <field name="note" optional="show"/>
+                                </tree>
+                                <kanban class="o_kanban_mobile">
+                                    <!-- Displayed fields -->
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="price_unit"/>
+                                    <field name="barcode"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_card oe_kanban_global_click ps-0 pe-0">
+                                                <div class="row g-0">
+                                                    <div class="col-2 pe-3">
+                                                        <img t-att-src="kanban_image('product.product', 'image_128', record.product_id.raw_value)" t-att-title="record.product_id.value" t-att-alt="record.product_id.value" style="max-width: 100%;"/>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <strong t-esc="record.product_id.value"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-muted">
+                                                            Quantité:
+                                                            <t t-esc="record.quantity.value"/>
+                                                        </div>
+                                                        <div class="text-muted">
+                                                            prix unitaire:
+                                                            <t t-esc="record.price_unit.value"/>
+                                                        </div>
+                                                        <div class="text-muted">
+                                                            Code-barre:
+                                                            <t t-esc="record.barcode.value"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

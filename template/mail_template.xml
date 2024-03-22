@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--
+    - Déplacer le prix à la fin de la vue, ajouter le code barre, image, colissage, texte et Note sur les lignes d'article.
+    - Utiliser la quantité en stock 
+    - Limiter uniquement les produits stockable sur la liste des articles du listing
+    - Mettre le nom du listing automatiquement. 
+    - Créer la vue Kanban pour afficher les articles sur mobile
+    - Envoyer les mails depuis les listing
+
+
+    - Prix à la fin
+    - Quantité en stock.
+    - Ajouter le code barre, colissage, texte.
+    - Note sur les lignes d'article.
+    - Image sur la vue liste
+
+    - Limiter uniquement les produits stockable.
+
+    - Mettre le nom par défaut Serah IN. 
+    - Créer la vue Kanban
+
+    - Envoyer les mails depuis les listing.
+
+    - Appliquer les remises sur la fiche client.
+
+-->
+    <data >
+        <!--Email template noupdate="0"-->
+        <record id="email_template_serah_in_id" model="mail.template">
+            <field name="name">Listing: Envoyer aux clients</field>
+            <field name="model_id" ref="serah_listing.model_serah_listing"/>
+            <field name="email_from">{{ (user.email_formatted) }}</field>
+            <field name="subject">{{ object.name }}</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                  
+                    <p style="box-sizing:border-box;margin: 0px; padding: 0px; font-size: 13px;">
+                        Serah In vous présente son tout nouveau catalogue de produits ! Explorez nos solutions innovantes et commandez dès maintenant.
+                    </p><br/>
+                    <p style="box-sizing:border-box;margin: 0px; padding: 0px; font-size: 13px;">
+                        Cordialement,<br/><br/>
+
+                        <t t-out="user.name or ''"> Service client </t><br/>
+                        Serah In
+                    </p>
+
+                </div>
+            </field>
+            <field name="report_template" ref="serah_listing.record_listing"/>
+            <field name="report_name">{{ object.name }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    
+    </data>
+    
+
+</odoo>

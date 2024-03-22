@@ -1,0 +1,34 @@
+
+<kanban class="o_kanban_mobile">
+    <!-- Displayed fields -->
+    <field name="name"/>
+    <field name="product_id"/>
+    <field name="quantity"/>
+    <field name="price_unit"/>
+    <templates>
+        <t t-name="kanban-box">
+            <div t-attf-class="oe_kanban_card oe_kanban_global_click ps-0 pe-0 {{ record.display_type.raw_value ? 'o_is_' + record.display_type.raw_value : '' }}">
+                <div class="row g-0">
+                    <div class="col-2 pe-3">
+                        <img t-att-src="kanban_image('product.product', 'image_128', record.product_id.raw_value)" t-att-title="record.product_id.value" t-att-alt="record.product_id.value" style="max-width: 100%;"/>
+                    </div>
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col">
+                                <strong t-esc="record.product_id.value"/>
+                            </div>
+                        </div>
+                        <div class="text-muted">
+                            Quantité:
+                            <t t-esc="record.quantity.value"/>
+                        </div>
+                        <div class="text-muted">
+                            prix unitaire:
+                            <t t-esc="record.price_unit.value"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </templates>
+</kanban>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.report" id="record_listing">
+        <field name="name">Imprimer</field>
+        <field name="model">serah.listing</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">serah_listing.report_listing_id</field>
+        <field name="report_file">serah_listing.report_listing_id</field>
+        <field name="binding_model_id" ref="model_serah_listing"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
