@@ -4,8 +4,9 @@
         <field name="name">Imprimer</field>
         <field name="model">serah.listing</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">serah_listing.report_listing_id</field>
-        <field name="report_file">serah_listing.report_listing_id</field>
+        <field name="report_name">serah_listing.report_listing</field>
+        <field name="report_file">serah_listing.report_listing</field>
+        <field name="paperformat_id" ref="serah_listing.paperformat_listing_report_sheet"/>
         <field name="binding_model_id" ref="model_serah_listing"/>
         <field name="binding_type">report</field>
     </record>

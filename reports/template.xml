@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_listing_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <table name="serah_listing_table" style="width: 100%; border:2px solid black;">
+                        <thead>
+                            <tr class="text-uppercase" style="background-color: #F1F1F1;" align="center">
+                                <th name="th_barcode" style="height:30px; width:15%;"><strong>Code Barre</strong></th>
+                                <th name="th_name" style="height:30px; width:30%;"><strong>Désignation</strong></th>
+                                <th name="th_text" style="height:30px; width:10%;"><strong>Texte</strong></th>
+                                <th name="th_colisage" style="height:30px; width:10%;"><strong>Colisage</strong></th>
+                                <th name="th_quantity" style="height:30px; width:10%;"><strong>Quantité en stock</strong></th>
+                                <th name="th_sm_unit" style="height:30px; width:10%;"><strong> </strong></th>
+                                <th name="th_image" style="height:30px; width:15%;"><strong>Photo</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="datas" t-value="docs.prepare_listing_data()"/>
+                            <t t-foreach="datas" t-as="category">
+                                <tr class="text-uppercase" align="center" style="background-color: white;">
+                                    <th colspan="7" style="font-weight:bold; font-size:30px;height:60px;width:100%; padding-top:10px;" name="category">
+                                        <strong><span style="color:#454748;" t-esc="category"/></strong>
+                                    </th>
+                                </tr>
+                                <t t-foreach="datas[category]" t-as="line">
+                                    <tr align="center" style="background-color: white;">
+                                        <td style="height:30px; width:15%;">
+                                            <p>
+                                                <span t-esc="line['barcode']"/>
+                                            </p>
+                                        </td>
+                                        <td style="height:30px; width:30%;">
+                                            <p>
+                                                <span t-esc="line['name']"/>
+                                            </p>
+                                        </td>
+                                        <td style="height:30px; width:10%;">
+                                            <span t-esc="line['text']"/>
+                                        </td>
+                                        <td style="height:30px; width:10%;">
+                                            <span t-esc="line['col']"/>
+                                        </td>
+                                        <td style="height:30px; width:10%;">
+                                            <span t-esc="line['quantity']"/>
+                                        </td>
+                                        <td style="height:30px; width:10%;">
+
+                                        </td>
+                                        <td style="height:30px; width:10%;">
+                                            <img t-if="line['image']" t-att-src="image_data_uri(line['image'])" style="padding:10px; max-height: 75px;" alt="Image produit non trouvé"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    <template id="report_listing">
+        <t t-call="serah_listing.report_listing_document" />
+    </template>
+</odoo>

@@ -53,6 +53,29 @@ class SerahListing(models.Model):
             'context': ctx,
         }
 
+    @api.model
+    def prepare_listing_data(self):
+        datas = {}
+        # active_ids = self.env.context.get('active_ids', [])
+        active_ids = self._prefetch_ids
+        listing_ids = self.env['serah.listing'].search([('id', 'in', active_ids)])
+        lines_id = listing_ids.mapped('listing_line')
+        for line in lines_id:
+            category = line.product_id.categ_id.name if line.product_id.categ_id else 'Uncategorized'
+            if category not in datas:
+                datas[category] = []
+            listing_data = {
+                'barcode': line.barcode,
+                'name': line.product_id.name,
+                'text': line.texte,
+                'col': line.colissage,
+                'quantity': line.quantity,
+                'unit': line.quantity,
+                'image': line.image_1920,
+            }
+            datas[category].append(listing_data)
+        return datas
+
 
 
 class SerahListingLine(models.Model):

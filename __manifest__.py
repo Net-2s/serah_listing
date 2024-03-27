@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product', 'sale'],
+    'depends': ['base', 'account', 'product', 'sale', 'stock'],
 
     # always loaded
     'data': [
@@ -31,12 +31,9 @@
         'views/listing.xml',
         'views/mail_form.xml',
         'views/menu.xml',
-        'report/report.xml',
-        'report/template.xml',
+        'reports/report_listing_paperformat.xml',
+        'reports/report.xml',
+        'reports/template.xml',
         'template/mail_template.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
     ],
 }
