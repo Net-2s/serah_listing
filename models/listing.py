@@ -65,12 +65,12 @@ class SerahListing(models.Model):
             if category not in datas:
                 datas[category] = []
             listing_data = {
-                'barcode': line.barcode,
                 'name': line.product_id.name,
+                'barcode': line.barcode,
                 'text': line.texte,
                 'col': line.colissage,
                 'quantity': line.quantity,
-                'unit': line.quantity,
+                'price_unit': line.price_unit,
                 'image': line.image_1920,
             }
             datas[category].append(listing_data)

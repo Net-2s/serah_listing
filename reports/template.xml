@@ -6,14 +6,14 @@
                 <div class="page">
                     <table name="serah_listing_table" style="width: 100%; border:2px solid black;">
                         <thead>
-                            <tr class="text-uppercase" style="background-color: #F1F1F1;" align="center">
-                                <th name="th_barcode" style="height:30px; width:15%;"><strong>Code Barre</strong></th>
-                                <th name="th_name" style="height:30px; width:30%;"><strong>Désignation</strong></th>
-                                <th name="th_text" style="height:30px; width:10%;"><strong>Texte</strong></th>
-                                <th name="th_colisage" style="height:30px; width:10%;"><strong>Colisage</strong></th>
-                                <th name="th_quantity" style="height:30px; width:10%;"><strong>Quantité en stock</strong></th>
-                                <th name="th_sm_unit" style="height:30px; width:10%;"><strong> </strong></th>
-                                <th name="th_image" style="height:30px; width:15%;"><strong>Photo</strong></th>
+                            <tr class="text-uppercase" style="background-color: #F1F1F1; padding-top:20px;" align="center">
+                                <th name="th_name" style="height:60px; width:30%;"><strong>Désignation</strong></th>
+                                <th name="th_barcode" style="height:60px; width:15%;"><strong>Code Barre</strong></th>
+                                <th name="th_text" style="height:60px; width:10%;"><strong>Texte</strong></th>
+                                <th name="th_colisage" style="height:60px; width:10%;"><strong>Colisage</strong></th>
+                                <th name="th_quantity" style="height:60px; width:10%;"><strong>Quantité en stock</strong></th>
+                                <th name="th_sm_unit" style="height:60px; width:10%;"><strong>Prix Unitaire </strong></th>
+                                <th name="th_image" style="height:60px; width:15%;"><strong>Photo</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,30 +26,30 @@
                                 </tr>
                                 <t t-foreach="datas[category]" t-as="line">
                                     <tr align="center" style="background-color: white;">
-                                        <td style="height:30px; width:15%;">
-                                            <p>
-                                                <span t-esc="line['barcode']"/>
-                                            </p>
-                                        </td>
                                         <td style="height:30px; width:30%;">
                                             <p>
-                                                <span t-esc="line['name']"/>
+                                                <span style="padding-top:20px;" t-esc="line['name']"/>
+                                            </p>
+                                        </td>
+                                        <td style="height:30px; width:15%;">
+                                            <p>
+                                                <span style="padding-top:20px;" t-esc="line['barcode']"/>
                                             </p>
                                         </td>
                                         <td style="height:30px; width:10%;">
-                                            <span t-esc="line['text']"/>
+                                            <span style="padding-top:20px;" t-esc="line['text']"/>
                                         </td>
                                         <td style="height:30px; width:10%;">
-                                            <span t-esc="line['col']"/>
+                                            <span style="padding-top:20px;" t-esc="line['col']"/>
                                         </td>
                                         <td style="height:30px; width:10%;">
-                                            <span t-esc="line['quantity']"/>
+                                            <span style="padding-top:20px;" t-esc="line['quantity']"/>
                                         </td>
                                         <td style="height:30px; width:10%;">
-
+                                            <span style="padding-top:20px;" t-esc="line['price_unit']"/>
                                         </td>
                                         <td style="height:30px; width:10%;">
-                                            <img t-if="line['image']" t-att-src="image_data_uri(line['image'])" style="padding:10px; max-height: 75px;" alt="Image produit non trouvé"/>
+                                            <img t-if="line['image']" t-att-src="image_data_uri(line['image'])" style="padding-top:20px; max-height: 75px;" alt="Image produit non trouvé"/>
                                         </td>
                                     </tr>
                                 </t>
